@@ -1,5 +1,5 @@
 #include <stdio.h>
-/*
+/**
  * main - Entry point
  * Description: Print the size of various types variables of C
  * Return: Always 0

@@ -1,2 +1,0 @@
-#!/bin/bash
-gcc -S -masm=intel -o $(cut -b 1-$((${#CFILE}-1)) <<<$CFILE)s $CFILE

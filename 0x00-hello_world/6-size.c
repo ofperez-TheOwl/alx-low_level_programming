@@ -1,13 +1,10 @@
 #include <stdio.h>
 /*
- * Print the size of various types variables of C
- * Return: 0
+ * main - Entry point
+ * Description: Print the size of various types variables of C
+ * Return: Always 0
  */
 int main(void)
-	/*
-	 *  Print the size of various types variables of C
-	 *  Return: 0
-	 */
 {
 	char a;
 	int b;

@@ -1,13 +1,10 @@
 #include <stdio.h>
 /*
- * main - Printing with printf
+ * main - Entry point
+ * Return: Always 1
  */
 int main(void)
-/*
- * main- Printing with printf
- * Return:1
- */
 {
-        printf("and that piece of art is useful\" - Dora Korpar, 2015-10-19", \n");
+        printf("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n");
         return (1);
 }

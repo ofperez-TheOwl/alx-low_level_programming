@@ -4,6 +4,10 @@
  * Return: 0
  */
 int main(void)
+	/*
+	 *  Print the size of various types variables of C
+	 *  Return: 0
+	 */
 {
 	char a;
 	int b;

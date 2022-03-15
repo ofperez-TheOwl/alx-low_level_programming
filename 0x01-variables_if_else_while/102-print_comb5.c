@@ -1,43 +1,52 @@
 #include <stdio.h>
 /**
  * main - entry point
- * print a num pair from 00-99 but no repeats (00 01, 00 02, 00 03,...)
- * Return: Always 0 (Success)
+ * print apair of numbers from 00-99 but (00 01, 00 02, 00 03,...)
+ * Return: Always 0
  */
-
 int main(void)
 {
-	int tens;
-	int ones;
-	int t;
-	int o;
+	int i = '0';
+	int j = '0';
+	int k = '0';
+	int l = '0';
 
-	for (tens = '0'; tens <= '9'; tens++)
+	while (i <= '9')
 	{
-		for (ones = '0'; ones <= '9'; ones++)
+		while (j <= '9')
 		{
-		 	for (t = tens; t <= '9'; t++)
+			while (k <= '9')
 			{
-				for (o = ones + 1; o <= '9'; o++)
+				while (l <= '9')
 				{
-					putchar(tens);
-					putchar(ones);
-					putchar(' ');
-					putchar(t);
-					putchar(o);
-
-					if (!((tens == '9' && ones == '8') &&
-					      (t == '9' && o == '9')))
+					if ((k > i) || ((k == i) && (l <= j)))
 					{
-						putchar(',');
+						l = l + 1;
+					}
+					else
+					{
+						putchar(i);
+						putchar(j);
 						putchar(' ');
+						putchar(k);
+						putchar(l);
+						if (!(i == '9' && j == '8' && k == '9' && l == '9'))
+						{
+							putchar(',');
+							putchar(' ');
+						}
+						l = l + 1;
 					}
 				}
-				o = '0';
+				l = '0';
+				k = k + 1;
 			}
+			k = 0;
+			j = j + 1;
 		}
+		j = '0';
+		i = i + 1;
 	}
 	putchar('\n');
-
 	return (0);
 }

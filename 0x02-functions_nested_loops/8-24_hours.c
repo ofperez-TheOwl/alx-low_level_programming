@@ -13,20 +13,19 @@ void jack_bauer(void)
 	int k = '0';
 	int l = '0';
 
-	while (i <= '2')
+	while (i <= '2')/*hours tens digit*/
 	{
-		while (j <= '9')
+		while (j <= '9')/*hours ones digit*/
 		{
 			if (i == '2' && j >= '4')
 			{
 				_putchar('\n');
-				j = j + 1;
 			}
 			else
 			{
-				while (k <= '5')
+				while (k <= '5')/*minutes tens digit*/
 				{
-					while (l <= '9')
+					while (l <= '9')/*minutes ones digit*/
 					{
 						_putchar(i);
 						_putchar(j);
@@ -43,5 +42,4 @@ void jack_bauer(void)
 		}
 		i = i + 1;
 	}
-	_putchar('\n');
 }

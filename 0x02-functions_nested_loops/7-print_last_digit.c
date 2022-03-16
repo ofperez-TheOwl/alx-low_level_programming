@@ -11,12 +11,12 @@ int print_last_digit(int n)
 {
 	int i;
 
-	if (n < 0) /* if nis négative turn it positive */
+	if (n < 0) /* if n is négative turn it positive */
 	{
 		n = n * (-1);
 	}
 	i = n % 10;
-	_putchar(i);
+	_putchar('0' + i);
 
 	return (i);
 }

@@ -2,7 +2,9 @@
 
 /**
  * add - add two integers
- * Argument: x + y
+ * @x: integer
+ * @y: integer
+ *
  * Return: value of x + y
  */
 

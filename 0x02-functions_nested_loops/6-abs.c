@@ -2,7 +2,7 @@
 
 /**
  * _abs - compute the absolute value of argument
- * Argument: integer n
+ * @n: integer
  * Return: absolute value of n
  */
 

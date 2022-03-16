@@ -2,6 +2,7 @@
 
 /**
  * jack_bauer - printsevery minute of a day
+ *
  * Return: nothing
  */
 
@@ -16,8 +17,8 @@ void jack_bauer(void)
 	{
 		while (j <= '9')
 		{
-			if (i = '2' && j >= '4')
-			{	
+			if (i == '2' && j >= '4')
+			{
 				_putchar('\n');
 			}
 			else

@@ -3,7 +3,7 @@
 
 /**
  * print_to_98 - print integer from argument no 98
- * Argument: integer n
+ * @n: integer
  * Return: Always 0
  */
 
@@ -15,7 +15,7 @@ void print_to_98(int n)
 	{
 		while (i >= 98)
 		{
-			printf('%d , ',i);
+			printf('%d , ', i);
 			i = i - 1;
 		}
 		_putchar('\n');
@@ -28,7 +28,7 @@ void print_to_98(int n)
 	{
 		while (i <= 98)
 		{
-			printf('%d ,',i);
+			printf('%d ,', i);
 			i = i + 1;
 		}
 		_putchar('\n');

@@ -2,7 +2,8 @@
 
 /**
  * _isalpha - check if argument is a letter lowercase of uppercase
- * Argument: integer c
+ * @c: integer
+ *
  * Return: 1 if c is a letter, 0 if not
  */
 

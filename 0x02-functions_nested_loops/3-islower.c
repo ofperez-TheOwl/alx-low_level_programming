@@ -2,7 +2,8 @@
 
 /**
  * _islower - check for lowercase character
- * Argument: integar c
+ * @c: integer
+ *
  * Return: 1 if c is lowercase , 0 if not
  */
 
@@ -12,7 +13,7 @@ int _islower(int c)
 	{
 		return (1);
 	}
-	else 
+	else
 	{
 		return (0);
 	}

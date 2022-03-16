@@ -24,7 +24,7 @@ void times_table(void)
 				_putchar(' ');
 				_putchar(' ');
 			}
-			else
+			else if (k > 9)
 			{
 				_putchar('0' + (k / 10));
 				_putchar('0' + (k % 10));
@@ -34,7 +34,7 @@ void times_table(void)
 			}
 			j = j + 1;
 		}
-		_putchar('\n');/* next column*/
+		_putchar('\n');/* next line*/
 		j = '0';
 		i = i + 1;
 	}

@@ -15,25 +15,27 @@ void print_to_98(int n)
 	{
 		while (i >= 98)
 		{
-			printf("%i", i);
+			printf(i);
 			_putchar(',');
 			_putchar(' ');
 			i = i - 1;
+			_putchar('\n');
 		}
 	}
 	else if (n == 98)
 	{
 		printf("98");
+		_putchar('\n');
 	}
 	else if (n < 98)
 	{
 		while (i <= 98)
 		{
-			printf("%d", i);
+			printf(i);
 			_putchar(',');
 			_putchar(' ');
 			i = i + 1;
+			_putchar('\n');
 		}
 	}
-	_putchar('\n');
 }

@@ -4,7 +4,7 @@
 /**
  * print_to_98 - print integer from argument no 98
  * @n: integer
- * Return: Always 0
+ * Return: nothing
  */
 
 void print_to_98(int n)
@@ -15,20 +15,25 @@ void print_to_98(int n)
 	{
 		while (i >= 98)
 		{
-			printf('%d , ', i);
+			printf("%i", i);
+			_putchar(',');
+			_putchar(' ');
 			i = i - 1;
 		}
 		_putchar('\n');
 	}
 	else if (n == 98)
 	{
-		printf('98\n');
+		printf("98");
+		_putchar('\n');
 	}
 	else if (n < 98)
 	{
 		while (i <= 98)
 		{
-			printf('%d ,', i);
+			printf("%d", i);
+			_putchar(',');
+			_putchar(' ');
 			i = i + 1;
 		}
 		_putchar('\n');

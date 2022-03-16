@@ -20,6 +20,7 @@ void jack_bauer(void)
 			if (i == '2' && j >= '4')
 			{
 				_putchar('\n');
+				j = j + 1;
 			}
 			else
 			{
@@ -33,10 +34,14 @@ void jack_bauer(void)
 						_putchar(k);
 						_putchar(l);
 						_putchar('\n');
+						l = l + 1;
 					}
+					k = k + 1;
 				}
+				j = j + 1;
 			}
 		}
+		i = i + 1;
 	}
 	_putchar('\n');
 }

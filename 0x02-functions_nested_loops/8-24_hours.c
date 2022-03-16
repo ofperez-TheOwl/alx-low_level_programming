@@ -17,11 +17,7 @@ void jack_bauer(void)
 	{
 		while (j <= '9')/*hours ones digit*/
 		{
-			if (i == '2' && j >= '4')
-			{
-				_putchar('\n');
-			}
-			else
+			if (!(i == '2' && j >= '4'))
 			{
 				while (k <= '5')/*minutes tens digit*/
 				{
@@ -40,6 +36,10 @@ void jack_bauer(void)
 				}
 				j = j + 1;
 				k = '0';
+			}
+			else
+			{
+				j = '9' + 1;
 			}
 		}
 		i = i + 1;

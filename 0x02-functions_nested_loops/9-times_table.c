@@ -17,20 +17,28 @@ void times_table(void)
 		while (j <= 9)/* lines*/
 		{
 			k = i * j;
-			if (k <= 9)
+			if (i = 0)
 			{
 				_putchar('0' + k);
 				_putchar(',');
 				_putchar(' ');
 				_putchar(' ');
 			}
-			else if (k > 9)
+			else
 			{
-				_putchar('0' + (k / 10));
-				_putchar('0' + (k % 10));
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
+				if (k > 9)
+				{
+					_putchar('0' + (k / 10));
+					_putchar('0' + (k % 10));
+					_putchar(',');
+					_putchar(' ');
+				}
+				else
+				{
+					_putchar('0' + k);
+					_putchar(',');
+					_putchar(' ');
+				}
 			}
 			j = j + 1;
 		}
@@ -38,5 +46,4 @@ void times_table(void)
 		j = '0';
 		i = i + 1;
 	}
-	_putchar('\n');
 }

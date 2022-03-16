@@ -28,7 +28,7 @@ void print_to_98(int n)
 		while (i <= 98)
 		{
 			printf("%d, ", i);
-			i = i + 1
+			i = i + 1;
 		}
 	}
 	putchar('\n');

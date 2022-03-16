@@ -32,7 +32,7 @@ void jack_bauer(void)
 						_putchar(':');
 						_putchar(k);
 						_putchar(l);
-						-putchar('\n');
+						_putchar('\n');
 					}
 				}
 			}

@@ -18,7 +18,7 @@ int main(void)
 	for (k = 3; k <= 50; k = k + 1)
 	{
 		l = i + j;
-		printf("%d, ", l);
+		printf("%lli, ", l);
 		i = j;
 		j = l;
 	}

@@ -45,7 +45,7 @@ void times_table(void)
 			j = j + 1;
 		}
 		_putchar('\n');/* next line*/
-		j = '0';
+		j = 0;
 		i = i + 1;
 	}
 }

@@ -18,7 +18,12 @@ int main(void)
 	for (k = 3; k <= 50; k = k + 1)
 	{
 		l = i + j;
-		printf("%li, ", l);
+		printf("%li", l);
+		if ( k != 50)
+		{
+			putchar(',');
+			putchar(' ');
+		}
 		i = j;
 		j = l;
 	}

@@ -17,28 +17,30 @@ void times_table(void)
 		while (j <= 9)/* lines*/
 		{
 			k = i * j;
-			if (i == 0)
+			if (k == 0 && i == 0)/*first column*/
 			{
-				_putchar('0' + k);
+				_putchar('0');
+			}
+			else if (k == 0 && j == 0)/*first line*/
+			{
 				_putchar(',');
 				_putchar(' ');
 				_putchar(' ');
+				_putchar('0');
 			}
-			else
+			else if	(k > 9)/*double digit*/
 			{
-				if (k > 9)
-				{
-					_putchar('0' + (k / 10));
-					_putchar('0' + (k % 10));
-					_putchar(',');
-					_putchar(' ');
-				}
-				else
-				{
-					_putchar('0' + k);
-					_putchar(',');
-					_putchar(' ');
-				}
+				_putchar(',');
+				_putchar(' ');
+				_putchar('0' + (k / 10));
+				_putchar('0' + (k % 10));
+			}
+			else/*one digit other than 0*/
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar('0' + k);
 			}
 			j = j + 1;
 		}

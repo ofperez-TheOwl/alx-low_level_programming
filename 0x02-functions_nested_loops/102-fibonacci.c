@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
@@ -13,7 +12,7 @@ int main(void)
 	int i = 1;
 	int j = 2;
 	int k;
-	int l;
+	long long int l;
 
 	printf("%d, %d, ", i, j);
 	for (k = 3; k <= 50; k = k + 1)

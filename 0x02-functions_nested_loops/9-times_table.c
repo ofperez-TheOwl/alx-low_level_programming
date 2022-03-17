@@ -10,18 +10,18 @@ void times_table(void)
 {
 	int i = 0;
 	int j = 0;
-	int k;
+	int k = 0;
 
-	while (i <= 9)/* columns*/
+	while (i <= 9)/* lines*/
 	{
-		while (j <= 9)/* lines*/
+		while (j <= 9)/* columns*/
 		{
 			k = i * j;
-			if (k == 0 && i == 0)/*first column*/
+			if (k == 0 && j == 0)/*first column*/
 			{
 				_putchar('0');
 			}
-			else if (k == 0 && j == 0)/*first line*/
+			else if (k == 0 && i == 0)/*first line*/
 			{
 				_putchar(',');
 				_putchar(' ');
@@ -35,7 +35,7 @@ void times_table(void)
 				_putchar('0' + (k / 10));
 				_putchar('0' + (k % 10));
 			}
-			else/*one digit other than 0*/
+			else if (k > 0 && k <= 9)/*one digit other than 0*/
 			{
 				_putchar(',');
 				_putchar(' ');

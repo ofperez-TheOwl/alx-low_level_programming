@@ -9,12 +9,12 @@
 
 int main(void)
 {
-	int i = 1;
-	int j = 2;
+	long int i = 1;
+	long int j = 2;
 	int k;
 	long int l;
 
-	printf("%d, %d, ", i, j);
+	printf("%li, %li, ", i, j);
 	for (k = 3; k <= 50; k = k + 1)
 	{
 		l = i + j;

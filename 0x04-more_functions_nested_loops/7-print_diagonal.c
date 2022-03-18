@@ -20,7 +20,7 @@ void print_diagonal(int n)
 	{
 		while (i <= n)/* number of line*/
 		{
-			while (k <= n)/* number of space*/
+			while (k <= i)/* number of space*/
 			{
 				_putchar(' ');
 				k = k + 1;

@@ -23,7 +23,7 @@ void print_diagonal(int n)
 			while (k <= n)/* number of space*/
 			{
 				_putchar(' ');
-				k = K + 1;
+				k = k + 1;
 			}
 			_putchar('\\');
 			_putchar('\n');

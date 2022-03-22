@@ -18,6 +18,7 @@ void print_rev(char *s)
 	}
 /* printing*/
 	s--;
+	i--;
 	if (i >= 0)
 	{
 		while (i >= 0)

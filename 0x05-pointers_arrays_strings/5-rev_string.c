@@ -11,7 +11,7 @@ void rev_string(char *s)
 {
 	int i = 0;
 	int k = 0;
-	char str[] = *s;
+	char str[] = s;
 	/*length of string*/
 	while (*s != '\0')
 	{
@@ -21,7 +21,7 @@ void rev_string(char *s)
 	/*reversing*/
 	while (i >= 0)
 	{
-		*s[k] = str [i];
+		s[k] = str [i];
 		i = i - 1;
 		k = k + 1;
 	}

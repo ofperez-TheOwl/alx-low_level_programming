@@ -9,10 +9,16 @@
 
 void rev_string(char *s)
 {
-	int i = _strlen(*s) - 1;
+	int i = 0;
 	int k = 0;
 	char str[] = *s;
-
+	/*length of string*/
+	while (*s != '\0')
+	{
+		i++;
+		*s = *s + 1;
+	}
+	/*reversing*/
 	while (i >= 0)
 	{
 		*s[k] = str [i];

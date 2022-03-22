@@ -34,6 +34,6 @@ void rev_string(char *s)
 	}
 	else
 	{
-		-putchar('\n');
+		_putchar('\n');
 	}
 }

@@ -20,7 +20,7 @@ void rev_string(char *s)
 	}
 	/*reversing*/
 	i--;
-	if (i >= 0)
+	if (i > 0)
 	{
 		while (k < i)
 		{
@@ -30,10 +30,5 @@ void rev_string(char *s)
 			i--;
 			k++;
 		}
-		_putchar('\n');
-	}
-	else
-	{
-		_putchar('\n');
 	}
 }

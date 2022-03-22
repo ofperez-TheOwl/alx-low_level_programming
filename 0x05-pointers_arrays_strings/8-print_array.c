@@ -3,7 +3,7 @@
 
 /**
  * print_array - print n element of an array of integer
- * @*a: pointer to array
+ * @a: pointer to array
  * @n: integer
  *
  * Return: nothing
@@ -13,6 +13,10 @@ void print_array(int *a, int n)
 {
 	int i;
 
+	if (n <= 0)
+	{
+		_putchar('\n');
+	}	
 	for (i = 0; i < n; i++)
 	{
 		if (i == n - 1)

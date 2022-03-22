@@ -2,7 +2,8 @@
 
 /**
  * _strlen - returns the length of a string
- * @s: string
+ * @s: pointer to a string
+ *
  * Return: length
  */
 
@@ -20,25 +21,27 @@ int _strlen(char *s)
 }
 
 /**
- * puts_half - prints half of a string, followed by a new line
- * @str: string to print
+ * puts_half - prints half of a string
+ * @str: pointer to a string
+ *
+ * Return: nothing
  */
 
 void puts_half(char *str)
 {
-	int idx;
+	int n;
 	int len = _strlen(str);
 
-	/* find the index to start depending on even/odd amount of strlen */
+	/* find the index to start */
 	if (len % 2 != 0)
-		idx = (len / 2) + 1;
+		n = (len / 2) + 1;
 	else
-		idx = (len / 2);
+		n = (len / 2);
 
-	while (idx < len)
+	while (n < len)
 	{
-		_putchar(*(str + idx));
-		idx++;
+		_putchar(*(str + n));
+		n++;
 	}
 	_putchar('\n');
 }

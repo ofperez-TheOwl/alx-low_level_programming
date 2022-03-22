@@ -12,11 +12,12 @@ void rev_string(char *s)
 	int i = 0;
 	int k = 0;
 	char str;
+	char ss = s;
 	/*length of string*/
-	while (*s != '\0')
+	while (*ss != '\0')
 	{
 		i++;
-		s++;
+		ss++;
 	}
 	/*reversing*/
 	i--;

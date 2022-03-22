@@ -20,15 +20,12 @@ void rev_string(char *s)
 	}
 	/*reversing*/
 	i--;
-	if (i > 0)
+	while (k < i)
 	{
-		while (k < i)
-		{
-			str = s[k];
-			s[k] = s[i];
-			s[i] = str;
-			i--;
-			k++;
-		}
+		str = s[k];
+		s[k] = s[i];
+		s[i] = str;
+		i--;
+		k++;
 	}
 }

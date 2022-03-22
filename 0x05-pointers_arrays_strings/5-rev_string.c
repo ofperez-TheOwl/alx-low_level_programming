@@ -20,13 +20,20 @@ void rev_string(char *s)
 	}
 	/*reversing*/
 	i--;
-	while (k < i)
+	if (i >= 0)
 	{
-		str = s[k];
-		s[k] = s[i];
-		s[i] = str;
-		i--;
-		k++;
+		while (k < i)
+		{
+			str = s[k];
+			s[k] = s[i];
+			s[i] = str;
+			i--;
+			k++;
+		}
+		_putchar('\n');
 	}
-	_putchar('\n');
+	else
+	{
+		-putchar('\n');
+	}
 }

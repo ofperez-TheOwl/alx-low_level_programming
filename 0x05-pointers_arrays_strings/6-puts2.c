@@ -1,6 +1,25 @@
 #include "main.h"
 
 /**
+ * _strlen - calculate length of string
+ * @s: pointer to string
+ *
+ * Return: length of s
+ */
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*s != '\0')
+	{
+		len++;
+		s++;
+	}
+
+	return (len);
+}
+
+/**
  * puts2 - print every other(???) character
  * @str: pointer to a string
  *
@@ -10,24 +29,15 @@
 void puts2(char *str)
 {
 	int i = 0;
-	int len = 0;
-
-	/*length of string*/
-	while (str[i] != '\0')
-	{
-		len++;
-		i++;
-	}
-
+	int len = _strlen(str) - 1;
 	/*printing*/
-	i = 0;
 	while (i <= len)
 	{
 		if (i % 2 == 0)
 		{
 			_putchar(str[i]);
 		}
-		i = i + 1;
+		i++;
 	}
 	_putchar('\n');
 }

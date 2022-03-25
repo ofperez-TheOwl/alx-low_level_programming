@@ -1,26 +1,6 @@
 #include "main.h"
 
 /**
- * _strlen - calculate length of string
- * @s: pointer to string
- *
- * Return: length of string
- */
-
-int _strlen(char *s)
-{
-	int i;
-
-	for (i = 0; *s != '\0', i++)
-	{
-		i++;
-		s++;
-	}
-
-	return (i);
-}
-
-/**
  * *_strcat - concatenate two string overwriting
  * the final null byte of the first
  * @dest: pointer to the first string
@@ -31,19 +11,20 @@ int _strlen(char *s)
 
 char *_strcat(char *dest, char *src)
 {
-	int lend = _strlen(dest);
-	int lens = _strlen(src);
-	char *ret;
-	int i;
+	int i = 0;
 	int k = 0;
 
-	ret = dest;
-	for (i = lend; i <= lend + lens + 1; i++)
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+	while (src[k] != '\0')
 	{
 		dest[i] = src[k];
-		dest++;
 		k++;
+		i++;
 	}
+	dest[i] = '\0';
 
-	return (ret);
+	return (dest);
 }

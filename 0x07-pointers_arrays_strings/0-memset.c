@@ -9,13 +9,18 @@
  * Return: pointer to rewriten string
  */
 
-char *_memset(char *s; char b; unsigned int n)
+char *_memset(char *s, char b, unsigned int n)
 {
-	int i;
+	int i = n;
 
-	for (i = 0; i < n; i++)
+	if (i > 0)
 	{
-		s[i] = b;
+		int k;
+
+		for (k = 0; k < i; k++)
+		{
+			s[k] = b;
+		}
 	}
 
 	return (s);

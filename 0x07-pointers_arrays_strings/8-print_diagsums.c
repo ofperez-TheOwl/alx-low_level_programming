@@ -8,7 +8,7 @@
  * Return: Nothing
  */
 
-void print_diagsums(int *a; int size)
+void print_diagsums(int *a, int size)
 {
        	int i = size;
 	int j = 0;
@@ -20,14 +20,16 @@ void print_diagsums(int *a; int size)
 		i = -1 * size;
         while (j < i)
 	{
-		diag1 = diag1 + a[j][j];
+		k = (j * i) + j;
+		diag1 = diag1 + a[k];
 		j++;
 	}
-	while (i > 0)
+	j = 1;
+	while (j <= i)
 	{
-		diag2 = diag2 + a [k][i - 1];
-		i--;
-		k++;
+		k = (j * i) - j;
+		diag2 = diag2 + a[k];
+		j++;
 	}
-	printf("%d, %d", diag1, diag2);
+	printf("%d, %d\n", diag1, diag2);
 }

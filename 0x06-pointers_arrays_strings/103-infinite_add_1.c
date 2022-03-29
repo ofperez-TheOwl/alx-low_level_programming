@@ -36,7 +36,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int i = ln1 - 1, j = ln2 - 1, t = size_r - 1, dec = 0, k;/* counters */
 
 	/* length check */
-	if (ln1 >= size_r || ln2 >= size_r)
+	if (ln1 > size_r || ln2 > size_r)
 		return (0);
 	while (t >= 0)
 	{

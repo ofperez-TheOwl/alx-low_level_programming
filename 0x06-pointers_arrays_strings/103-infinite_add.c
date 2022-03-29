@@ -36,8 +36,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int i = ln1 - 1, j = ln2 - 1, t = size_r - 1, dec = 0, k;/* counters */
 
 	/* length check */
-	if (ln1 >= size_r || ln2 >= size_r)
+	if (!(ln1 < size_r - 1 || ln2 < size_r - 1))
 		return (0);
+	/* addition */
 	while (t >= 0)
 	{
 		if (i >= 0 && j >= 0)/* addition when both digit exist*/
@@ -65,10 +66,14 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			dec = 0;
 		}
 		if (i < 0 && j < 0 && dec == 0)/* if there is no digit*/
+		{
+			r[size_r] = '\0';
 			return (r + t);
+		}
 		t--;
 		i--;
 		j--;
 	}
 	return (0);
 }
+/*Elfueros*/

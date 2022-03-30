@@ -16,24 +16,27 @@ char *_strstr(char *haystack, char *needle)
 
 	for (i = 0; haystack[i] != '\0'; i++)
 	{
-		if (needle[0] == haystack[i])
+		if (needle[0] == haystack[i])/* find the first matching */
 		{
-			k = i;
-			for (j = 1; needle[j] != '\0'; j++) /* find the first correspondance */
+			k = i + 1;
+			j = 1;
+			while (needle[j] != '\0')/* check total match*/
 			{
-				if (haystack[k] == needle[j]) /* check if substring correspond */
+				if (needle[j] == haystack[k] && needle[j + 1] != '\0')
 				{
-					k++;
 					j++;
+					k++;
+				}
+				else if (needle[j] == haystack[k] && needle[j + 1] == '\0')
+				{
+					return (haystack + i);
 				}
 				else
-					break; /* no substring matching */
-			}
-			if (needle[j] == '\0') /* match of substring */
-			{
-				return (haystack + i);
+					break;
 			}
 		}
+		else
+			return ('\0'); /* no matching */
 	}
 	return ('\0'); /* no matching */
 }

@@ -1,4 +1,5 @@
 #include "main.h"
+#define NULL 0
 
 /**
  * _strstr - locate a substring
@@ -14,6 +15,8 @@ char *_strstr(char *haystack, char *needle)
 	int j;
 	int k;
 
+	if (needle[0] == '\0')
+		return (haystack);
 	for (i = 0; haystack[i] != '\0'; i++)
 	{
 		if (needle[0] == haystack[i])/* find the first matching */
@@ -36,7 +39,7 @@ char *_strstr(char *haystack, char *needle)
 			}
 		}
 		else
-			return ('\0'); /* no matching */
+			return (NULL); /* no matching */
 	}
-	return ('\0'); /* no matching */
+	return (NULL); /* no matching */
 }

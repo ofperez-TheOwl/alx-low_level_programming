@@ -17,7 +17,7 @@ int prime_testing(int n, int div)
 	if (n % div == 0)
 		return (0);
 	/* recursive instructins */
-	if (n % div != 0)
+	else
 		return (prime_testing(n, div + 1));
 }
 

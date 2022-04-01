@@ -20,6 +20,8 @@ int sqrt_test(int n, int root)
 	/* recursive instructions */
 	if (root * root != n)
 		return (sqrt_test(n, root + 1));
+}
+
 /**
  * _sqrt_recursion - calculate natural square root of an integer
  * @n: integer; number to process
@@ -47,5 +49,5 @@ int _sqrt_recursion(int n)
 	else if (n >= 100)
 		return (sqrt_test(n, 10));
 	else
-		return (srt_test(n, 2));
+		return (sqrt_test(n, 2));
 }

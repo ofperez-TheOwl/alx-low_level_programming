@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
  * main - entry point
@@ -8,12 +7,14 @@
  * @argc: integer; argument counter
  * @argv: pointer to array of string; argument vector
  *
- * Return: integer; always 1
+ * Return: integer; always 0
  * TheOwl
  */
 
-int main(int argc, __attribute__((unused)) char *argv[])
+int main(int argc, char *argv[])
 {
-	printf("%s\n", argv[0]);
-	exit(EXIT_SUCCESS);
+	if (argc >= 1)
+		printf("%s\n", argv[0]);
+
+	return (0);
 }

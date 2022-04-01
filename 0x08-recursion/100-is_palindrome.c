@@ -54,6 +54,7 @@ int is_palindrome(char *s)
 	/* exclusion */
 	if (*s == '\0' || *(s + 1) == '\0')
 		return (1);
+
 	else
 	{
 		t = _strend(s);

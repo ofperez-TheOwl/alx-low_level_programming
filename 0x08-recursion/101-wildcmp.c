@@ -15,7 +15,7 @@ int wild_test(char *s1, char *s2, char *nextchar)
 	/* base case */
 	if (*s1 == '\0' && *s2 == '\0')
 		return (1);
-	if (*s1 == '\0' && *s != '\0')
+	if (*s1 == '\0' && *s2 != '\0')
 		return (0);
 	/* recursive instructions */
 	if (*s2 == '*')

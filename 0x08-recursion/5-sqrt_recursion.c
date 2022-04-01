@@ -18,7 +18,7 @@ int sqrt_test(int n, int root)
 	else if (root * root > n)
 		return (-1);
 	/* recursive instructions */
-	if (root * root != n)
+	else
 		return (sqrt_test(n, root + 1));
 }
 

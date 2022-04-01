@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	}
 	else if (argc == 2 && atoi(argv[1]) <= 0)
 	{
-		printf("%d\n",0);
+		printf("%d\n", 0);
 		exit(EXIT_SUCCESS);
 	}
 	else
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
 		j = i / 25;
 		k = j * 25;
-	       	j = j + ((i - k) / 10);
+		j = j + ((i - k) / 10);
 		k += ((i - k) / 10) * 10;
 		j = j + ((i - k) / 5);
 		k += ((i - k) / 5) * 5;
@@ -41,4 +41,4 @@ int main(int argc, char *argv[])
 		printf("%d\n", j);
 		exit(EXIT_SUCCESS);
 	}
-}		
+}

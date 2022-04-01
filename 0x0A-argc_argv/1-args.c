@@ -5,7 +5,7 @@
  * main - entry point
  * prints the number of argument
  * @argc: integer; argument counter
- * @argc: pointer to array of string; argument vector
+ * @argv: pointer to array of string; argument vector
  *
  * Return: Always success 0
  * TheOwl
@@ -16,5 +16,5 @@ int main(int argc, char *argv[] __attribute__((unused)))
 	if (argc > 0)
 		printf("%d\n", argc - 1);
 
-	return(0);
+	return (0);
 }

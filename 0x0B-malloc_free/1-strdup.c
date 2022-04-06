@@ -33,8 +33,9 @@ int _strlen(char *s)
 
 char *_strdup(char *str)
 {
-	if (*str == '\0')
+	if (*str == NULL)
 		return (NULL);
+
 	else
 	{
 		char *newstr = malloc(_strlen(str) * sizeof(char) + 1);

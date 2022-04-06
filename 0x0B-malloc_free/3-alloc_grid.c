@@ -14,24 +14,32 @@
 
 int **alloc_grid(int width, int height)
 {
-	if (width == 0 || height == 0)
+	int **grid;
+	int i, j;
+
+	if (width <= 0 || height <= 0)
 		return (NULL);
-	else
+
+	/* memory for rows*/
+	grid = malloc(height * sizeof(int *));
+
+	if (grid == NULL)
+		return (NULL);
+
+	/* memory for columns */
+	for (i = 0; i < height; i++)
 	{
-		int **grid = malloc(width * height * sizeof(int));
-		int i =0, j;
-
-		if (grid == NULL)
-			return (NULL);
-		while (i < height)
+		grid[i] = malloc(width * sizeof(int));
+		if (grid[i] == NULL)
 		{
-			for (j = 0; j < width; j++)
-			{
-				grid[i][j] = 0;
-			}
-			i++;
+			for (i = 0; i < height; i++)
+				free(grid[i]);
+			free(grid);
+			return (NULL);
 		}
-
-		return (grid);
+		for (j = 0; j < width; j++) /* set array values to 0 */
+			grid[i][j] = 0;
 	}
+
+	return (grid);
 }

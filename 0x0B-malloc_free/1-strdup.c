@@ -38,6 +38,7 @@ char *_strdup(char *str)
 	else
 	{
 		char *newstr = malloc(_strlen(str) * sizeof(char) + 1);
+		int i;
 
 		if (newstr == NULL)
 			return (NULL);

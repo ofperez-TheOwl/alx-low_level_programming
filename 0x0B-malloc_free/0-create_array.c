@@ -16,17 +16,18 @@ char *create_array(unsigned int size, char c)
 {
 	if (size == 0)
 		return (NULL);
+	
 	else
 	{
-		char *str = malloc(size * sizeof(char) + 1);
+		char *str = malloc(size * sizeof(char));
 		int i;
 
 		if (str == NULL)
 			return (NULL);
 		str[size + 1] = '\0';
-		for(i = 0; str[i] != '\0'; i++)
+		for (i = 0; str[i] != '\0'; i++)
 		{
-			str[i] = c;
+			str[i] = '\0' + c;
 		}
 		return (str);
 	}

@@ -76,7 +76,7 @@ char **strtow(char *str)
 	char **words;
 	int i = 0, j, k, now, lenw;
 
-	if (str == NULL || str == "")/* exclusion */
+	if (str == NULL)/* exclusion */
 		return (NULL);
 	/* find number of word in str and length of longest */
 	now = number_of_word(str);

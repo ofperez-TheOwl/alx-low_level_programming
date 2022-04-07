@@ -56,12 +56,10 @@ int longest_word(char *s, int plen)
 	/* recursive instructions */
 	if (*s != '\0')
 	{
-		if (plen > longest_word(s; len))
+		if (plen > longest_word(s, len))
 			return (plen);
-
-		else
-			return (len);
 	}
+	return (len);
 }
 
 /**
@@ -75,12 +73,11 @@ int longest_word(char *s, int plen)
 
 char **strtow(char *str)
 {
-	if (str == NULL || str == "")/* exclusion */
-		return (NULL);
-
 	char **words;
 	int i = 0, j, k, now, lenw;
 
+	if (str == NULL || str == "")/* exclusion */
+		return (NULL);
 	/* find number of word in str and length of longest */
 	now = number_of_word(str);
 	lenw = longest_word(str, 0);

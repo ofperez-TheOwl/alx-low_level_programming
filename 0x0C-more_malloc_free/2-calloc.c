@@ -21,7 +21,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	cal = malloc(nmemb * size);
 	if (cal == NULL)
 		return (NULL);
-	for (i = 0; i <= nmemb * size; i++)
+	for (i = 0; i < nmemb * size; i++)
 		((char *)cal)[i] = 0;
 	return (cal);
 }

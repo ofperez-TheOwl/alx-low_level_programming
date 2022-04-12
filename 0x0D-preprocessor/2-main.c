@@ -4,7 +4,7 @@
  * main - entry point
  * prints name of file
  *
- * Return: always 1
+ * Return: always 0
  * TheOwl
  */
 
@@ -12,5 +12,5 @@ int main(void)
 {
 	printf("%s\n", __FILE__);
 
-	return (1);
+	return (0);
 }

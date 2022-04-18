@@ -23,7 +23,8 @@ int _strlen(char *s)
 }
 
 /**
- * _strcpy - copies the string pointed to by src, including the terminating null byte (\0)
+ * _strcpy - copies the string pointed to by src,
+ * including the terminating null byte (\0)
  * @dest: pointer a destination string
  * @src: pointer to origin source
  *
@@ -90,5 +91,5 @@ dog_t *new_dog(char *name, float age, char *owner)
 	}
 	newdog->age = age;
 
-	return(newdog);
+	return (newdog);
 }

@@ -11,7 +11,7 @@
 int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned int i;
-	unsigned long int j = 0;
+	unsigned long int j = 1;
 
 	/* exclusion for invalid input */
 	i = 8 * sizeof(unsigned long int);
@@ -19,7 +19,7 @@ int clear_bit(unsigned long int *n, unsigned int index)
 		return (-1);
 	/* set to 0 */
 	j = ~(j << index);
-	*n = (*n & mask);
+	*n = (*n & j);
 
 	return (1);
 }

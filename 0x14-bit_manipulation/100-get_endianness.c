@@ -11,7 +11,7 @@ int get_endianess(void)
 	int i = 1;
 	char *c = (char *)(&i);
 
-	if (*c)
+	if (*c == 1)
 		return (1);
 	else
 		return (0);

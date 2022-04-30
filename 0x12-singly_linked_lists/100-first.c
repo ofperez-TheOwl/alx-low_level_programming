@@ -1,8 +1,11 @@
 #include <stdio.h>
 
 /**
- * this function executes before the main function
+ * execute_before_main - this function executes before the main
+ * function and prints messages
  * the declaration of "__attribute__ ((constructor))" is the key
+ *
+ * Return: nothing
  * TheOwl
  */
 void __attribute__ ((constructor)) execute_before_main()

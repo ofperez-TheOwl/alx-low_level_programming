@@ -17,12 +17,12 @@ list_t *add_node(list_t **head, const char *str)
 	list_t *new;
 	unsigned int i = 0;
 
+	if (str == NULL)
+		return (NULL); /* exclusion for non valide input */
 	while (*(str + i) != '\0')
 	{
 		i++;
 	}
-	if (i == 0)
-		return (NULL); /* exclusion for non valide input */
 	new = malloc(sizeof(list_t));
 	if (new == NULL)
 		return (NULL); /* malloc failure */

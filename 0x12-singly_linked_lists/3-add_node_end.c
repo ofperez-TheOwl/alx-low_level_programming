@@ -20,7 +20,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	{
 		i++;
 	}
-	if (i == 0)
+	if (str == NULL)
 		return (NULL); /* exclusion for non valide input */
 	new = malloc(sizeof(list_t));
 	if (new == NULL)

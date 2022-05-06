@@ -21,23 +21,23 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (filename == NULL) /* invalid input */
 		return (0);
+
 	fd = open(filename, O_RDONLY); /* open the file and check */
 	if (fd == -1)
 		return (0);
-	buffer = malloc(letters * sizeof(char));
+
+	buffer = malloc(letters * sizeof(char)); /* malloc for buffer */
 	if (buffer == NULL)
-	{
-		close(fd);
 		return (0);
-	}
+
 	i = read(fd, buffer, letters); /* read first letters of file and check */
 	if (i == -1)
 	{
-		close(fd);
 		free(buffer);
+		close(fd);
 		return (0);
 	}
-	/* buffer[letters] = '\0';*/
+
 	j = write(STDOUT_FILENO, buffer, letters); /* write to stdout and check */
 	if (j == -1)
 	{
@@ -45,6 +45,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
+
 	close(fd);
 	return (i);
 }

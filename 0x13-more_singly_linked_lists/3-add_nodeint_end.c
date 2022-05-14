@@ -22,18 +22,16 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	new->next = NULL;
 	if (*head == NULL) /* first element of list */
 		return (new);
-	else
-	{
-		_putchar('2');
+	_putchar('2');
 	/* traversing list to find last element */
-		tmp = *head;
-		while (tmp != NULL)
-		{
-			tmp = tmp->next;
-		}
-		_putchar('3');
+	tmp = *head;
+	while (tmp != NULL)
+	{
+		tmp = tmp->next;
+	}
+	_putchar('3');
 	/* set new node as last element */
-		tmp->next = new;
+	tmp->next = new;
 	}
 	return (*head);
 }

@@ -3,7 +3,7 @@
 
 /**
  * listint_len - finds the number of elements in a list of listint_t
- * @: pointer to constant listint_t; list of listint_t object
+ * @h: pointer to constant listint_t; list of listint_t object
  *
  * Return: size_t; number of elements
  * TheOwl

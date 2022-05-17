@@ -17,21 +17,20 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
-	_putchar('1');
 	new->n = n;
 	new->next = NULL;
 	if (*head == NULL) /* first element of list */
-		return (new);
-	_putchar('2');
+	{
+		*head = new;
+		return (*head);
+	}
 	/* traversing list to find last element */
 	tmp = *head;
-	while (tmp != NULL)
+	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
 	}
-	_putchar('3');
 	/* set new node as last element */
 	tmp->next = new;
-	}
 	return (*head);
 }

@@ -7,13 +7,12 @@
  * @needle: pointer to string; substring to search for
  *
  * Return: pointer to the located sustring or NULL if none
+ * TheOwl
  */
 
 char *_strstr(char *haystack, char *needle)
 {
-	int i;
-	int j;
-	int k;
+	int i, j, k;
 
 	if (needle[0] == '\0')
 		return (haystack);
@@ -32,14 +31,12 @@ char *_strstr(char *haystack, char *needle)
 				}
 				else if (needle[j] == haystack[k] && needle[j + 1] == '\0')
 				{
-					return (haystack + i);
+					return (&haystack[i]);
 				}
 				else
 					break;
 			}
 		}
-		else
-			return (NULL); /* no matching */
 	}
 	return (NULL); /* no matching */
 }

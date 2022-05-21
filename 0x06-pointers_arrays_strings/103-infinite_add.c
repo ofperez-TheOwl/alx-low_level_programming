@@ -5,6 +5,7 @@
  * @s: pointer to string
  *
  * Return: length of string
+ * TheOwl
  */
 int _strlen(char *s)
 {
@@ -27,53 +28,56 @@ int _strlen(char *s)
  *
  * Return: pointer to string holding the result or 0 if
  * r cannot hold the result
+ * TheOwl
  */
-
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int ln1 = _strlen(n1);
 	int ln2 = _strlen(n2);
-	int i = ln1 - 1, j = ln2 - 1, t = size_r - 1, dec = 0, k;/* counters */
+	int i = ln1 - 1, j = ln2 - 1, tt = size_r - 1; /* counters */
+	int dec = 0, k; /* rest and result of addition */
 
 	/* length check */
-	if (!(ln1 < size_r - 1 || ln2 < size_r - 1))
+	if (ln1 > size_r - 1 || ln2 > size_r - 1)
+		return (0);
+	if ((ln1 == size_r - 1 && ln2 > 0) || (ln1 > 0 && ln2 == size_r - 1))
 		return (0);
 	/* addition */
-	while (t >= 0)
+	while (tt >= 0)
 	{
-		if (i >= 0 && j >= 0)/* addition when both digit exist*/
+		if (i >= 0 && j >= 0) /* addition when both digit exist */
 		{
 			k = (n1[i] - '0') + (n2[j] - '0') + dec;
-			r[t] = '0' + (k % 10);/* setting the result to r*/
-			dec = k / 10;/* setting the rest */
+			r[tt] = '0' + (k % 10); /* setting the result to r */
+			dec = k / 10; /* setting the rest */
 		}
-		if (i >= 0 && j < 0)/* addition when only n1 digits exist*/
+		if (i >= 0 && j < 0) /* addition when only n1 digits exist */
 		{
 			k = (n1[i] - '0') + dec;
-			r[t] = '0' + (k % 10);/* setting the result to r*/
-			dec = k / 10;/* setting the rest */
+			r[tt] = '0' + (k % 10); /* setting the result to r */
+			dec = k / 10; /* setting the rest */
 		}
-		if (i < 0 && j >= 0)/* addition when only n2 digits exist*/
+		if (i < 0 && j >= 0) /* addition when only n2 digits exist */
 		{
 			k = (n2[j] - '0') + dec;
-			r[t] = '0' + (k % 10);/* setting the result to r*/
-			dec = k / 10;/* setting the rest */
+			r[tt] = '0' + (k % 10); /* setting the result to r */
+			dec = k / 10; /* setting the rest */
 		}
 		if (i < 0 && j < 0 && dec != 0)/* if there is no digit*/
 		{
 			k = dec;
-			r[t] = '0' + (k % 10);/* setting the result to r*/
+			r[tt] = '0' + (k % 10);/* setting the result to r*/
 			dec = 0;
 		}
-		if (i < 0 && j < 0 && dec == 0)/* if there is no digit*/
+		if (i < 0 && j < 0 && dec == 0) /* if there is no digit*/
 		{
 			r[size_r] = '\0';
-			return (r + t);
+			return (r + tt);
 		}
-		t--;
+		tt--;
 		i--;
 		j--;
 	}
-	return (0);
+	_strlen(r);
+	return (r + tt);
 }
-/*Elfueros*/

@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * _strlen - get the length of a string
@@ -55,13 +56,20 @@ char *add_maker(int i, int j, int tt, char *n1, char *n2, char *r)
 			r[tt] = '0' + (k % 10); /* setting the result to r */
 			dec = k / 10; /* setting the carry over */
 		}
-		if (i < 0 && j < 0 && dec != 0)/* if there is no digit*/
+		if (i < 0 && j < 0 && dec != 0) /* if there is no digit */
 		{
+			if (tt == 0)
+			{
+				r[t] = '\0';
+				r = NULL;
+				break;
+			}
 			k = dec;
-			r[tt] = '0' + (k % 10);/* setting the result to r*/
+			r[tt] = '0' + (k % 10); /* setting the result to r */
 			dec = 0;
+
 		}
-		if (i < 0 && j < 0 && dec == 0) /* if there is no digit*/
+		if (i < 0 && j < 0 && dec == 0) /* if there is no digit */
 		{
 			r[t] = '\0';
 			r = r + tt;
@@ -93,10 +101,12 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	/* length check */
 	if (ln1 > size_r - 1 || ln2 > size_r - 1)
 		return (0);
-	if ((ln1 == size_r - 1 && ln2 > 0) || (ln1 > 0 && ln2 == size_r - 1))
+/*	if ((ln1 == size_r - 1 && *n2 > '0') || (ln1 > 0 && ln2 == size_r - 1))
 		return (0);
-
+*/
 	/* addition */
 	r = add_maker(ln1 - 1, ln2 - 1, size_r - 1, n1, n2, r);
+	if (r == NULL)
+		return (0);
 	return (r);
 }

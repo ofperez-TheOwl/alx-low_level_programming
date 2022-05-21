@@ -34,7 +34,7 @@ int _strlen(char *s)
  */
 char *add_maker(int i, int j, int tt, char *n1, char *n2, char *r)
 {
-	int dec = 0, k, t = tt + 1; /* carry over and result of addition */
+	int dec = 0, k; /* carry over and result of addition */
 
 	while (tt >= 0)
 	{
@@ -59,19 +59,13 @@ char *add_maker(int i, int j, int tt, char *n1, char *n2, char *r)
 		if (i < 0 && j < 0 && dec != 0) /* if there is no digit */
 		{
 			if (tt == 0)
-			{
-				r[t] = '\0';
-				r = NULL;
-				break;
-			}
+				return (NULL);
 			k = dec;
 			r[tt] = '0' + (k % 10); /* setting the result to r */
 			dec = 0;
-
 		}
 		if (i < 0 && j < 0 && dec == 0) /* if there is no digit */
 		{
-			r[t] = '\0';
 			r = r + tt;
 			break;
 		}
@@ -101,10 +95,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	/* length check */
 	if (ln1 > size_r - 1 || ln2 > size_r - 1)
 		return (0);
-/*	if ((ln1 == size_r - 1 && *n2 > '0') || (ln1 > 0 && ln2 == size_r - 1))
-		return (0);
-*/
 	/* addition */
+	r[size_r] = '\0';
 	r = add_maker(ln1 - 1, ln2 - 1, size_r - 1, n1, n2, r);
 	if (r == NULL)
 		return (0);

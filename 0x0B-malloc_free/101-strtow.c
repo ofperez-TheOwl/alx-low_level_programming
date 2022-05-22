@@ -25,7 +25,7 @@ char *word_insert(char *str, int i, int l)
 		j++;
 		i++;
 	}
-	*(word +j + 1) = '\0';
+	*(word + j + 1) = '\0';
 	return (word);
 }
 
@@ -48,7 +48,7 @@ char **word_dispatch(char *str, int i, int k, char **word_list)
 	if (str[i] == '\0')
 	{
 		/* allocate space for array of pointers that point to each word*/
-		word_list = malloc((k + 1) * sizeof(char*));
+		word_list = malloc((k + 1) * sizeof(char *));
 		if (word_list == NULL)
 			return (NULL);
 		word_list[k] = NULL;
@@ -87,8 +87,17 @@ char **strtow(char *str)
 	char **word_list = NULL;
 	int i = 0, k = 0;
 
-	if (str == NULL)
+	if (str == NULL || *str == '\0')
 		return (NULL);
+	while (str[i] != '\0')
+	{
+		if (str[i] == ' ')
+			k++;
+		i++;
+	}
+	if (i == k)
+		return (NULL);
+	i = 0, k = 0;
 	word_list = word_dispatch(str, i, k, word_list);
 	return (word_list);
 }

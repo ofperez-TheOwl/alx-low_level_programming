@@ -60,7 +60,7 @@ char **word_dispatch(char *str, int i, int k, char **word_list)
 	{
 		k++;
 		j = i;
-		while (str[i] != ' ')
+		while (str[i] != ' ' && str[i] != '\0')
 			i++;
 		/* set each word pointer to its place in the array of pointers */
 		word_list = word_dispatch(str, i, k, word_list);

@@ -25,7 +25,8 @@ char *word_insert(char *str, int i, int l)
 		j++;
 		i++;
 	}
-	*(word +j + 1) = '\0';
+	*(word + j + 1) = '\0';
+	printf("word set correctly");
 	return (word);
 }
 
@@ -68,6 +69,7 @@ char **word_dispatch(char *str, int i, int k, char **word_list)
 	}
 	if (str[i] == ' ') /* if space move index and recall word_dispactch */
 	{
+		printf("i = %d and is space\n", i);
 		word_list = word_dispatch(str, i + 1, k, word_list);
 		return (word_list);
 	}
@@ -90,5 +92,9 @@ char **strtow(char *str)
 	if (str == NULL)
 		return (NULL);
 	word_list = word_dispatch(str, i, k, word_list);
+	printf("first word is %s\n", word_list[0]);
+	printf("second word is %s\n", word_list[1]);
+	printf("third word is %s\n", word_list[2]);
+	free(word_list);
 	return (word_list);
 }

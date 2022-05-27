@@ -139,7 +139,7 @@ char *addition(char *num1, char *num2, char *result,
  * @num2: pointer to char; second number
  * @sub_result: double pointer to char; result of sub operations
  *
- * Return: int; 1 if success 98 if failure
+ * Return: int; 0 if success 98 if failure
  * TheOwl
  */
 int operation(char *num1, char *num2, char **sub_result)
@@ -162,7 +162,9 @@ int operation(char *num1, char *num2, char **sub_result)
 	if (lnum1 == 1)
 	{
 		printf("%s\n", (sub_result[0]));
-		return (1);
+		free(sub_result[0]);
+		free(sub_result);
+		return (0);
 	}
 	/* addition of partial multiplication and printing of result */
 	i = 1;
@@ -173,14 +175,17 @@ int operation(char *num1, char *num2, char **sub_result)
 			result++;
 		result = addition(result, sub_result[i], result,
 				_strlen(result) - 1, _strlen(sub_result[i]) - 1, 0, 0);
+		free(sub_result[i - 1]);
 		i++;
 	}
 	i = 0;
 	while (result[i] == '0')
 		i++;
 	printf("%s\n", result + i);
+	free(result);
+	free(sub_result);
 
-	return (1);
+	return (0);
 }
 
 /**

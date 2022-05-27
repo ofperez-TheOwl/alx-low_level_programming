@@ -199,12 +199,12 @@ int main(int argc, char **argv)
 	if (argc != 3)
 	{
 		printf("Error\n");
-		exit(98);
+		return (98);
 	}
 	if (digit_check(argv[1]) == 0 || digit_check(argv[2]) == 0)
 	{
 		printf("Error\n");
-		exit(98);
+		return (98);
 	}
 	/* if onenumber is nil */
 	if (digit_check(argv[1]) == 2 || digit_check(argv[2]) == 2)
@@ -217,7 +217,7 @@ int main(int argc, char **argv)
 	if (sub_result == NULL)
 	{
 		printf("Error\n");
-		exit(98);
+		return (98);
 	}
 
 	return (operation(argv[1], argv[2], sub_result));

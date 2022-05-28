@@ -2,9 +2,9 @@
 
 /**
  * int_index - searches for integer in array with function pointer
- * @array: pointer to array of int; 
+ * @array: pointer int; array of integers
  * @size: int; size of array
- * @cmp: pointer to function taking an int as argument;
+ * @cmp: pointer to function taking an int as argument and returning int;
  * function for searching/comparing that we need to execute
  *
  * Return: index of integer if success or -1 if not
@@ -25,5 +25,4 @@ int int_index(int *array, int size, int (*cmp)(int))
 			return (i);
 
 	return (-1);
-
 }

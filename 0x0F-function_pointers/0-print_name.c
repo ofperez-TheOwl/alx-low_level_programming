@@ -2,7 +2,7 @@
 
 /**
  * print_name - execute a function given as a parameter
- * @name: pointer to char; parameter the function to execute
+ * @name: pointer to char; parameter of the function to execute
  * @f:pointer to function taking char-pointer argument;function to execute
  *
  * Return: nothing

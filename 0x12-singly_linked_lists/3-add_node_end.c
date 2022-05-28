@@ -24,11 +24,19 @@ list_t *add_node_end(list_t **head, const char *str)
 		return (NULL); /* exclusion for non valide input */
 	new = malloc(sizeof(list_t));
 	if (new == NULL)
+	{
+		free(new);
 		return (NULL); /* malloc failure */
+	}
 	/* set new values */
 	new->str = strdup(str);
 	if (new->str == NULL)
+	{
+		free(new->str);
+		free(new->next);
+		free(new);
 		return (NULL); /* strdup failure */
+	}
 	new->len = i;
 	new->next = NULL;
 	/* find last element */
@@ -44,6 +52,5 @@ list_t *add_node_end(list_t **head, const char *str)
 	}
 	/* setting the list */
 	temp->next = new;
-
 	return (new);
 }

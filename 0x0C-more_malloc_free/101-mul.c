@@ -66,7 +66,7 @@ char *multiplication(char n, char *num2, int zero,
 	{
 		result = malloc((digit + zero + 1) * sizeof(char));
 		if (result == NULL)
-			return (NULL);
+			exit(98);
 		result[digit + zero] = '\0';
 		while (zero > 0)
 		{
@@ -112,7 +112,7 @@ char *addition(char *num1, char *num2, char *result,
 	{
 		result = malloc((digit + 1) * sizeof(char));
 		if (result == NULL)
-			return (NULL);
+			exit(98);
 		result[digit] = '\0';
 		result[0] = '0' + carry;
 		return (result);
@@ -137,21 +137,16 @@ char *addition(char *num1, char *num2, char *result,
  * operation - multiply two given number
  * @num1: pointer to char; first number
  * @num2: pointer to char; second number
- * @sub_result: double pointer to char; result of sub operations
+ * @sub_result: double pointer to char; result of multiplications
+ * @result: double pointer to char; result of addtions
  *
  * Return: int; 0 if success 98 if failure
  * TheOwl
  */
-int operation(char *num1, char *num2, char **sub_result)
+int operation(char *num1, char *num2, char **sub_result, char **result)
 {
-	char *result;
-	int i = 0, lnum1 = _strlen(num1), lnum2 = _strlen(num2);
+	int i = 0, k = 0, lnum1 = _strlen(num1), lnum2 = _strlen(num2);
 	/* partial multiplication by digits of first number */
-	while (i < lnum1 + 1)
-	{
-		sub_result[i] = NULL;
-		i++;
-	}
 	i = lnum1 - 1;
 	while (i >= 0)
 	{
@@ -159,31 +154,47 @@ int operation(char *num1, char *num2, char **sub_result)
 				lnum2 - 1, 0, 0, sub_result[i]);
 		i--;
 	}
+
 	/* addition of partial multiplication and printing of result */
-	if (lnum1 == 1)
-		result = sub_result[0];
-	else
+	result[0] = sub_result[0];
+	i = 1;
+	if (lnum1 != 1)
 	{
-		i = 1;
-		result = sub_result[0];
 		while (i < lnum1)
 		{
-			if (result[0] == '0')
-				result++;
-			result = addition(result, sub_result[i], result,
-					_strlen(result) - 1, _strlen(sub_result[i]) - 1, 0, 0);
+			result[i] = addition(result[i - 1], sub_result[i], result[i],
+				_strlen(result[i - 1]) - 1, _strlen(sub_result[i]) - 1, 0, 0);
 			i++;
 		}
 	}
-	i = 0;
-	while (result[i] == '0')
-		i++;
-	printf("%s\n", result + i);
-	free(result);
-	free(sub_result);
-	exit(EXIT_SUCCESS);
+	while (result[i - 1][k] == '0')
+		k++;
+	printf("%s\n", result[i - 1] + k);
 	return (0);
 }
+
+/**
+ * freed - frees memory that were allocated
+ * @result: double pointer to char;
+ * @sub_result: double pointer to char;
+ * @len: int; number of elements
+ *
+ * Return: nothing
+ * TheOwl
+ */
+void freed(char **result, char **sub_result, int len)
+{
+	free(sub_result[0]);
+	while (len > 0)
+	{
+		free(sub_result[len]);
+		free(result[len]);
+		len--;
+	}
+	free(sub_result);
+	free(result);
+}
+
 
 /**
  * main - entry point
@@ -196,7 +207,8 @@ int operation(char *num1, char *num2, char **sub_result)
  */
 int main(int argc, char **argv)
 {
-	char **sub_result;
+	char **sub_result, **result;
+	int i = 0;
 	/* exclusions */
 	if (argc != 3)
 	{
@@ -208,11 +220,11 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(98);
 	}
-	/* if onenumber is nil */
+	/* if one number is nil */
 	if (digit_check(argv[1]) == 2 || digit_check(argv[2]) == 2)
 	{
 		printf("0\n");
-		return (1);
+		return (0);
 	}
 	/* malloc failure */
 	sub_result = malloc((_strlen(argv[1]) + 1) * sizeof(char *));
@@ -221,6 +233,19 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(98);
 	}
-
-	return (operation(argv[1], argv[2], sub_result));
+	result = malloc((_strlen(argv[1]) + 1) * sizeof(char *));
+	if (result == NULL)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	while (i < _strlen(argv[1]) + 1)
+	{
+		sub_result[i] = NULL;
+		result[i] = NULL;
+		i++;
+	}
+	i = operation(argv[1], argv[2], sub_result, result);
+	freed(result, sub_result, _strlen(argv[1]) + 1);
+	return (i);
 }

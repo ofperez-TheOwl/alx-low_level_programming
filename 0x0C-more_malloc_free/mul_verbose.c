@@ -5,22 +5,25 @@
  * digit_check - checks for non digit symbols
  * @str: pointer to string; number to process
  *
- * Return: int; 1 if all symbols are digits and 0 if not
+ * Return: int; 2 if all symballs are 0s,
+ * 1 if all symbols are digits and
+ * 0 if there is non digit symbols
  * TheOwl
  */
 int digit_check(char *str)
 {
-	int i = 0;
+	int i = 0, j = 0;
+
 	while (*(str + i) != '\0')
 	{
 		if (*(str + i) < '0' || *(str + i) > '9')
-		{
-			printf("non digit symbol\n");
 			return (0);
-		}
+		if (*(str + i) == '0')
+			j++;
 		i++;
-		printf("all digits are symbols\n");
 	}
+	if (j == i)
+		return (2);
 	return (1);
 }
 
@@ -61,22 +64,17 @@ char *multiplication(char n, char *num2, int zero,
 	/* base case */
 	if (i < 0)
 	{
-		printf("Number of zero is %d\n", zero);
 		result = malloc((digit + zero + 1) * sizeof(char));
 		if (result == NULL)
-			return (NULL);
+			exit(98);
 		result[digit + zero] = '\0';
-		printf("result is like %s before zeros insert\n", result);
 		while (zero > 0)
 		{
 			result[digit + zero - 1] = '0';
 			zero--;
 		}
-		printf("result is like %s after zeros insert\n", result);
 		result[0] = '0' + carry;
-		printf("result is like %s insert of carry\n", result);
-		printf("this is result[digit] %s after zeros insert\n", result + digit);
-		printf("Last recursion of multiplication\n");
+		printf("when i is < 0 result is %p\n", result);
 		return (result);
 	}
 	/* recursive instructions */
@@ -89,6 +87,7 @@ char *multiplication(char n, char *num2, int zero,
 		digit++;
 	result = multiplication(n, num2, zero, i - 1, digit, carry, result);
 	result[i + 1] = '0' + dec;
+	printf("when i == %d result is %p\n", i, result);
 	return (result);
 }
 
@@ -110,32 +109,31 @@ char *addition(char *num1, char *num2, char *result,
 {
 	int k, dec;
 
-	printf("num1 index = %d and num2 index %d addition started\n", i, j);
 	/* base case */
 	if (i < 0)
 	{
 		result = malloc((digit + 1) * sizeof(char));
 		if (result == NULL)
-			return (NULL);
+			exit(98);
 		result[digit] = '\0';
 		result[0] = '0' + carry;
-		printf("Last recursion of addition\n");
+		printf("when i is < 0 result is %p\n", result);
 		return (result);
 	}
 	/* recursive instructions */
 	if (j >= 0)
 		k = (num1[i] - '0') + (num2[j] - '0') + carry;
 	else
-		k = (num1[i] - '0') + carry;	
+		k = (num1[i] - '0') + carry;
 	dec = k % 10;
 	carry = k / 10;
 	if (i == 0)
 		digit = digit + 2;
 	else
 		digit++;
-	printf("num1 index (%d) and num2 index (%d) addition completed, call of next recursion\n", i, j);
 	result = addition(num1, num2, result, i - 1, j - 1, digit, carry);
 	result[i + 1] = '0' + dec;
+	printf("when i == %d result is %p\n", i, result);
 	return (result);
 }
 
@@ -143,57 +141,47 @@ char *addition(char *num1, char *num2, char *result,
  * operation - multiply two given number
  * @num1: pointer to char; first number
  * @num2: pointer to char; second number
- * @sub_result: double pointer to char; result of sub operations
- * @result: pointer to char; final result
+ * @sub_result: double pointer to char; result of multiplications
+ * @result: double pointer to char; result of addtions
  *
- * Return : int; 1 if success 98 if failure
+ * Return: int; 0 if success 98 if failure
  * TheOwl
  */
-int operation(char *num1, char *num2, char **sub_result)
+int operation(char *num1, char *num2, char **sub_result, char **result)
 {
-	char *result;
-	int i = 0, lnum1 = _strlen(num1), lnum2 = _strlen(num2);
-
+	int i = 0, k = 0, lnum1 = _strlen(num1), lnum2 = _strlen(num2);
 	/* partial multiplication by digits of first number */
-	while (i < lnum1 + 1)
-	{
-		sub_result[i] = NULL;
-		i++;
-	}
-	printf("Initialisation of sub_result\n");
 	i = lnum1 - 1;
 	while (i >= 0)
 	{
 		sub_result[i] = multiplication(num1[i], num2, lnum1 - i - 1,
 				lnum2 - 1, 0, 0, sub_result[i]);
-		printf("%s\n", sub_result[i]);
+		printf("%c * num2 = %s. moving to next num1 char\n", num1[i], sub_result[i]);
+		printf("-->when i == %d sub_result is %p (%s)\n", i, sub_result[i], sub_result[i]);
 		i--;
 	}
-	printf("End of partial multiplication\n");
-	if (lnum1 == 1)
-	{
-		printf("%s\n", (sub_result[0]));
-		return (1);
-	}
+	printf("sub multiplications completed correctly\n");
+
 	/* addition of partial multiplication and printing of result */
+	result[0] = sub_result[0];
+	printf("start addition\n");
 	i = 1;
-	result = sub_result[0];
-	printf("lnum1 is not 0\n");
-	while (i < lnum1)
+	if (lnum1 != 1)
 	{
-		printf("Addition of sub_result (%s) with result (%s) \n", sub_result[i], result);
-		if (result[0] == '0')
-			result++;
-		result = addition(result, sub_result[i], result,
-				_strlen(result) - 1, _strlen(sub_result[i]) - 1, 0, 0);
-		i++;
-		printf("%dth addition completed and result is %s\n", i - 1, result);
+		while (i < lnum1)
+		{
+			printf("-->sub_result[%d](%s) + result[%d](%s)\n", i, sub_result[i], i - 1, result[i - 1]);
+			result[i] = addition(result[i - 1], sub_result[i], result[i],
+				_strlen(result[i - 1]) - 1, _strlen(sub_result[i]) - 1, 0, 0);
+			printf("-->when i == %d result is %p (%s)\n", i, result[i], result[i]);
+			i++;
+		}
 	}
-	printf("End of addition\n");
-
-	printf("%s\n", result);
-
-	return (1);
+	printf("addition completed correctly\n");
+	while (result[i - 1][k] == '0')
+		k++;
+	printf("%s\n", result[i - 1] + k);
+	return (0);
 }
 
 /**
@@ -207,25 +195,64 @@ int operation(char *num1, char *num2, char **sub_result)
  */
 int main(int argc, char **argv)
 {
-	char **sub_result;
-	
+	char **sub_result, **result;
+	int i = 0;
 	/* exclusions */
 	if (argc != 3)
 	{
-		printf("Error because of number\n");
+		printf("Error\n");
 		exit(98);
 	}
-	if (digit_check(argv[1]) != 1 || digit_check(argv[2]) != 1)
+	if (digit_check(argv[1]) == 0 || digit_check(argv[2]) == 0)
 	{
-		printf("Error because of non digit\n");
+		printf("Error\n");
 		exit(98);
 	}
+	/* if one number is nil */
+	if (digit_check(argv[1]) == 2 || digit_check(argv[2]) == 2)
+	{
+		printf("0\n");
+		return (0);
+	}
+	/* malloc failure */
 	sub_result = malloc((_strlen(argv[1]) + 1) * sizeof(char *));
 	if (sub_result == NULL)
 	{
-		printf("Error on malloc\n");
+		printf("Error\n");
 		exit(98);
 	}
-	printf("start operation\n");
-	return (operation(argv[1], argv[2], sub_result));
+	result = malloc((_strlen(argv[1]) + 1) * sizeof(char *));
+	if (result == NULL)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	while (i < _strlen(argv[1]) + 1)
+	{
+		sub_result[i] = NULL;
+		result[i] = NULL;
+		i++;
+	}
+	printf("initialization of sub_result and result completed correctly\n");
+	printf("sub_result is %p\n", *sub_result);
+	printf("result is %p\n", *result);
+	printf("result[0] is %p\n", result[0]);
+	i = operation(argv[1], argv[2], sub_result, result);
+	printf("sub_result[0] is %p\n", sub_result[0]);
+	printf("result[0] is %p\n", result[0]);
+	free(sub_result[0]);
+	i = _strlen(argv[1] + 1);
+	while (i > 0)
+	{
+		printf("sub_result[%d] is %p\n", i, sub_result[i]);
+		printf("result[%d] is %p\n", i, result[i]);
+		free(sub_result[i]);
+		free(result[i]);
+		i--;
+	}
+	printf("sub_result is %p\n", *sub_result);
+	printf("result is %p\n", *result);
+	free(sub_result);
+	free(result);
+	return (i);
 }

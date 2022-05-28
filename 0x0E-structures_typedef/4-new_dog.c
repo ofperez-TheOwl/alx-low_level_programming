@@ -42,6 +42,26 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
+ * free_dog - frees instances of struct dog
+ * @d: instance os dog to be freed
+ *
+ * Return: nothing
+ * TheOwl
+ */
+void free_dog(dog_t *d)
+{
+	/* exclusion */
+	if (d == NULL)
+		return;
+
+	if (d->name)
+		free(d->name);
+	if (d->owner)
+		free(d->owner);
+	free(d);
+}
+
+/**
  * *new_dog - creates a new object of type dog_t
  * @name: pointer to char; name of dog
  * @age: float; age of dog
@@ -59,10 +79,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	newdog = malloc(sizeof(dog_t));
 	if (newdog == NULL)
-	{
-		free(newdog);
 		return (NULL);
-	}
+	newdog->age = age;
 	/* copy of dog's name */
 	if (name == NULL)
 		(*newdog).name = NULL;
@@ -71,7 +89,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		dogname = malloc(sizeof(char) * (_strlen(name) + 1));
 		if (dogname == NULL)
 		{
-			free(newdog);
+			free_dog(newdog);
 			return (NULL);
 		}
 		(*newdog).name = _strcpy(dogname, name);
@@ -84,12 +102,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 		dogowner = malloc(sizeof(char) * (_strlen(owner) + 1));
 		if (dogowner == NULL)
 		{
-			free(newdog);
+			free_dog(newdog);
 			return (NULL);
 		}
 		(*newdog).owner = _strcpy(dogowner, owner);
 	}
-	newdog->age = age;
 
 	return (newdog);
 }

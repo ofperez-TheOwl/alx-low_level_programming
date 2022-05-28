@@ -159,7 +159,6 @@ int operation(char *num1, char *num2, char **sub_result, char **result)
 	/* addition of partial multiplication and printing of result */
 	f = result[0];
 	result[0] = sub_result[0];
-	printf("f = %p and result = %p\n", f, result[0]);
 	free(f);
 	i = 1;
 	if (lnum1 != 1)

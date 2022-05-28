@@ -146,6 +146,7 @@ char *addition(char *num1, char *num2, char *result,
 int operation(char *num1, char *num2, char **sub_result, char **result)
 {
 	int i = 0, k = 0, lnum1 = _strlen(num1), lnum2 = _strlen(num2);
+	char *f;
 	/* partial multiplication by digits of first number */
 	i = lnum1 - 1;
 	while (i >= 0)
@@ -156,7 +157,10 @@ int operation(char *num1, char *num2, char **sub_result, char **result)
 	}
 
 	/* addition of partial multiplication and printing of result */
+	f = result[0];
 	result[0] = sub_result[0];
+	printf("f = %p and result = %p\n", f, result[0]);
+	free(f);
 	i = 1;
 	if (lnum1 != 1)
 	{
@@ -194,7 +198,6 @@ void freed(char **result, char **sub_result, int len)
 	free(sub_result);
 	free(result);
 }
-
 
 /**
  * main - entry point

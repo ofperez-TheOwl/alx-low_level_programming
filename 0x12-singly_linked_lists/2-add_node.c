@@ -25,11 +25,19 @@ list_t *add_node(list_t **head, const char *str)
 	}
 	new = malloc(sizeof(list_t));
 	if (new == NULL)
+	{
+		free(new);
 		return (NULL); /* malloc failure */
+	}
 	/* setting new values */
 	new->str = strdup(str);
 	if (new->str == NULL)
+	{
+		free(new->str);
+		free(new->next);
+		free(new);
 		return (NULL); /* strdup failure */
+	}
 	new->len = i;
 	/* setting the list */
 	if (head == NULL)

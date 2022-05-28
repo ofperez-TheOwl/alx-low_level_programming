@@ -184,13 +184,13 @@ int operation(char *num1, char *num2, char **sub_result, char **result)
  */
 void freed(char **result, char **sub_result, int len)
 {
-	free(sub_result[0]);
 	while (len > 0)
 	{
 		free(sub_result[len]);
 		free(result[len]);
 		len--;
 	}
+	free(sub_result[0]);
 	free(sub_result);
 	free(result);
 }
@@ -202,7 +202,7 @@ void freed(char **result, char **sub_result, int len)
  * @argc: unsigned integer; argument counter
  * @argv: pointer to array of string pointers; argument vector
  *
- * Return: 1 if success, 98 if not
+ * Return: EXIT_SUCCESS if success, 98 if not
  * TheOwl
  */
 int main(int argc, char **argv)
@@ -220,7 +220,6 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(98);
 	}
-	/* if one number is nil */
 	if (digit_check(argv[1]) == 2 || digit_check(argv[2]) == 2)
 	{
 		printf("0\n");
@@ -246,6 +245,6 @@ int main(int argc, char **argv)
 		i++;
 	}
 	i = operation(argv[1], argv[2], sub_result, result);
-	freed(result, sub_result, _strlen(argv[1]) + 1);
-	return (i);
+	freed(result, sub_result, _strlen(argv[1]));
+	exit(EXIT_SUCCESS);
 }

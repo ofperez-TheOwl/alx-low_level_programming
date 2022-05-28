@@ -16,10 +16,14 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	/* set value of new node */
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
+	{
+		free(new);
 		return (NULL);
+	}
 	new->n = n;
 	new->next = NULL;
-	if (*head == NULL) /* first element of list */
+	/* set as first element of list */
+	if (*head == NULL)
 	{
 		*head = new;
 		return (*head);

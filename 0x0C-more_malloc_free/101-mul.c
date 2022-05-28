@@ -159,24 +159,21 @@ int operation(char *num1, char *num2, char **sub_result)
 				lnum2 - 1, 0, 0, sub_result[i]);
 		i--;
 	}
-	if (lnum1 == 1)
-	{
-		printf("%s\n", (sub_result[0]));
-		free(sub_result[0]);
-		free(sub_result);
-		return (0);
-	}
 	/* addition of partial multiplication and printing of result */
-	i = 1;
-	result = sub_result[0];
-	while (i < lnum1)
+	if (lnum1 == 1)
+		result = sub_result[0];
+	else
 	{
-		if (result[0] == '0')
-			result++;
-		result = addition(result, sub_result[i], result,
-				_strlen(result) - 1, _strlen(sub_result[i]) - 1, 0, 0);
-		free(sub_result[i - 1]);
-		i++;
+		i = 1;
+		result = sub_result[0];
+		while (i < lnum1)
+		{
+			if (result[0] == '0')
+				result++;
+			result = addition(result, sub_result[i], result,
+					_strlen(result) - 1, _strlen(sub_result[i]) - 1, 0, 0);
+			i++;
+		}
 	}
 	i = 0;
 	while (result[i] == '0')
@@ -184,7 +181,7 @@ int operation(char *num1, char *num2, char **sub_result)
 	printf("%s\n", result + i);
 	free(result);
 	free(sub_result);
-
+	exit(EXIT_SUCCESS);
 	return (0);
 }
 
@@ -204,12 +201,12 @@ int main(int argc, char **argv)
 	if (argc != 3)
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 	if (digit_check(argv[1]) == 0 || digit_check(argv[2]) == 0)
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 	/* if onenumber is nil */
 	if (digit_check(argv[1]) == 2 || digit_check(argv[2]) == 2)
@@ -222,7 +219,7 @@ int main(int argc, char **argv)
 	if (sub_result == NULL)
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 
 	return (operation(argv[1], argv[2], sub_result));

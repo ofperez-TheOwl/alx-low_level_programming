@@ -36,10 +36,16 @@ void free_listint(listint_t *head)
  */
 void free_listint2(listint_t **head)
 {
+	int i = 0;
+
 	if (head == NULL)
 		return;
 	if (*head == NULL)
 		return;
-	free_listint(*head);
+	while (head[i] != NULL)
+	{
+		free_listint(head[i]);
+		i++;
+	}
 	*head = NULL;
 }

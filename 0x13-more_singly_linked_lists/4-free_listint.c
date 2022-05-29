@@ -11,7 +11,12 @@
 void free_listint(listint_t *head)
 {
 	/*base case : only one element */
-	if (head == NULL || head->next == NULL)
+	if (head == NULL)
+	{
+		free(head);
+		return;
+	}
+	if (head->next == NULL)
 	{
 		free(head->next);
 		free(head);

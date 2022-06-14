@@ -6,7 +6,6 @@
  * print_char - prints char
  * @valist: va_list; valist
  */
-
 void print_char(va_list valist)
 {
 	printf("%c", va_arg(valist, int));

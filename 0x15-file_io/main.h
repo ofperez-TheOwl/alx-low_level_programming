@@ -1,6 +1,6 @@
-#include <unistd.h>
 #ifndef MAIN_H
 #define MAIN_H
+#include <unistd.h>
 
 /* open */
 #include <sys/types.h>

@@ -8,7 +8,7 @@
  * @filename: pointer to constant char; name of the file to read
  * @letters: size_t; number of letters to read and print
  *
- * Return: ssize_t; actual number letter read and printed
+ * Return: ssize_t; actual number of letter read and printed
  * 0 if file was not open or read or if filename is NULL
  * or write fails
  * TheOwl
@@ -26,7 +26,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (fd == -1)
 		return (0);
 
-	buffer = malloc(letters * sizeof(char)); /* malloc for buffer */
+	buffer = malloc((1 + letters) * sizeof(char)); /* malloc for buffer */
 	if (buffer == NULL)
 		return (0);
 
@@ -37,7 +37,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
-
+	buffer[letters] = '\0';
 	j = write(STDOUT_FILENO, buffer, letters); /* write to stdout and check */
 	if (j == -1)
 	{

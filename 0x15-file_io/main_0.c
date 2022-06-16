@@ -25,10 +25,10 @@ int main(int ac, char **av)
 		printf("Usage: %s filename size_to_read\n", av[0]);
 		exit(1);
 	}
-	fd1 = open("main.c", O_RDONLY);
+	fd1 = open("main_0.c", O_RDONLY);
 	if (fd1 == -1)
 	{
-		printf("Can't open the argument file.\n");
+		printf("Can't open file.\n");
 		return (1);
 	}
 	file = av[1];

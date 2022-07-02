@@ -100,5 +100,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	r = add_maker(ln1 - 1, ln2 - 1, size_r - 1, n1, n2, r);
 	if (r == NULL)
 		return (0);
+	while (*r > '9' || *r < '0')
+		r++;
 	return (r);
 }

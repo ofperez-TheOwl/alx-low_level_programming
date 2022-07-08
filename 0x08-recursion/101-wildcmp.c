@@ -63,7 +63,8 @@ int wild_test(char *s1, char *s2, int n)
 		if (*s1 != '\0' && *s2 == '\0')
 			return (1);
 		/* clean multiple occurence of the same char after '*' */
-		s2 = s2 + occurence_cleaner(s2, *s2, 1);
+		if (*s2 == *(s2 + 1))
+			s2 = s2 + occurence_cleaner(s2, *s2, 1);
 		if (*s1 != '\0' && *s2 != '*' && *s2 != '\0')
 		{
 			n = occurence_check(s1, *s2, n);

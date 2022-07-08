@@ -4,21 +4,20 @@
  * occurence_check - check occurrence of a char
  * @c: char; char to check for
  * @str: pointer to string; stringto process
+ * @n: int; counter
  *
  * Return: int; position of c or 0 if not found
  * TheOwl
  */
-int occurence_check(char *str, char c)
+int occurence_check(char *str, char c, int n)
 {
-	int n = 1;
-
-	while (*(str + n) != '\0')
-	{
-		if (*(str + n) == c)
-			return (n);
-		n++;
-	}
-	return (0);
+	/* base case */
+	if (*(str + n) == '\0')
+		return (0);
+	if (c == *(str + n))
+		return (n);
+	/* recursive instruction */
+	return (occurence_check(str, c, n + 1));
 }
 
 /**
@@ -44,7 +43,7 @@ int wild_test(char *s1, char *s2, int n)
 			return (1);
 		if (*s1 != '\0' && *s2 != '*' && *s2 != '\0')
 		{
-			n = occurence_check(s1, *s2);
+			n = occurence_check(s1, *s2, n);
 			if (n > 0)
 				return (wild_test(s1 + n, s2, 1));
 			else

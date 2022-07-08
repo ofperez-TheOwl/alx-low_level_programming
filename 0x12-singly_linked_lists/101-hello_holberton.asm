@@ -4,13 +4,13 @@
 section .text
 	global _start		;entry point declaration
 _start				;entry point
-	mov edx,len		;length of message
-	mov ecx,msg		;messsage
-	mov ebx,1		;file descriptor output of the program
-	mov eax,4		;system call number (sys_write)?
+	mov rdx,len		;length of message
+	mov rcx,msg		;messsage
+	mov rbx,1		;file descriptor output of the program
+	mov rax,4		;system call number (sys_write)?
 	int 0x80		;call kernel(?)
 
-	mov eax,1		;system call number(sys_exit)?
+	mov rax,1		;system call number(sys_exit)?
 	int 0x80		;call kernel
 
 section .data

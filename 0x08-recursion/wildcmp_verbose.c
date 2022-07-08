@@ -1,25 +1,5 @@
 #include "main.h"
-
-/**
- * occurence_check - check occurrence of a char
- * @c: char; char to check for
- * @str: pointer to string; stringto process
- *
- * Return: int; position of c or 0 if not found
- * TheOwl
- */
-int occurence_check(char *str, char c)
-{
-	int n = 1;
-
-	while (*(str + n) != '\0')
-	{
-		if (*(str + n) == c)
-			return (n);
-		n++;
-	}
-	return (0);
-}
+#include <stdio.h>
 
 /**
  * wild_test - check string after wildcard "*"
@@ -32,6 +12,7 @@ int occurence_check(char *str, char c)
  */
 int wild_test(char *s1, char *s2, int n)
 {
+/*	printf("s1 is (%c) s2 is (%c) n is (%d) \n", *s1, *s2, n);*/
 	/* base case */
 	if (*s1 == '\0' && *s2 == '\0')
 		return (1);
@@ -42,10 +23,28 @@ int wild_test(char *s1, char *s2, int n)
 	{
 		if (*s1 != '\0' && *s2 == '\0')
 			return (1);
-		if (*s1 != '\0' && *s2 != '*' && *s2 != '\0')
+		if (*s1 == *s2 && *s2 != '*' && *s2 != '\0')
 		{
-			n = occurence_check(s1, *s2);
-			if (n > 0)
+			while (*(s1 + n) != '\0')
+			{
+				if (*(s1 + n) == *s2)
+					break;
+				n++;
+			}
+			if (*(s1 + n) == *s2)
+				return (wild_test(s1 + n, s2, 1));
+			else
+				return (wild_test(s1 + 1, s2 + 1, 0));
+		}
+		if (*s1 != *s2 && *s1 != '\0' && *s2 != '*' && *s2 != '\0')
+		{
+			while (*(s1 + n) != '\0')
+			{
+				if (*(s1 + n) == *s2)
+					break;
+				n++;
+			}
+			if (*(s1 + n) == *s2)
 				return (wild_test(s1 + n, s2, 1));
 			else
 				return (wild_test(s1 + 1, s2 + 1, 0));
@@ -77,6 +76,7 @@ int wild_test(char *s1, char *s2, int n)
  */
 int wildcmp(char *s1, char *s2)
 {
+/*	printf("s1 is (%c) s2 is (%c) n is (%d) \n", *s1, *s2, 0);*/
 	/* exclusion */
 	if (*s1 != *s2 && *s2 != '*')
 		return (0);

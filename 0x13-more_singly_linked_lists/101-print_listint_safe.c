@@ -16,8 +16,6 @@ loop_r loop_finder(const listint_t *head)
 	loop_r result = {NULL, 0};
 	const listint_t *tmp_slow = head, *tmp_fast = head;
 
-	if (head == NULL)
-		exit(98);
 	if (head->next == NULL)
 		return (result);
 	while (tmp_slow && tmp_fast && tmp_fast->next)
@@ -54,6 +52,11 @@ size_t print_listint_safe(const listint_t *head)
 	size_t i = 0;
 	loop_r result = {NULL, 0};
 
+	if (head == NULL)
+	{
+		printf("0\n");
+		exit(98);
+	}
 	result = loop_finder(tmp);
 	if (!(result.node))
 	{

@@ -16,6 +16,22 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/**
+ * loop_return - result of loop_finder
+ * @node: listint_t; node where slow and fast meet each other
+ * @len: size_t; number of nodes before loop
+ *
+ * Description: datatype holding result of loop_finder function
+ * TheOwl
+ */
+typedef struct loop_return
+{
+	const listint_t *node;
+	size_t len;
+}loop_r;
+
+loop_r loop_finder(const listint_t *head);
+
 int _putchar(char c);
 
 size_t print_listint(const listint_t *h);

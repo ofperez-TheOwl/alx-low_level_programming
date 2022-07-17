@@ -23,24 +23,25 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (idx == 0)
 		return (add_dnodeint(h, n));
 	/* not first not last insertion */
-	while (tmp != NULL)
+	while (tmp->next != NULL)
 	{
-		if (i == idx)
+		if (i == idx - 1)
 		{
 			new = malloc(sizeof(dlistint_t));
 			if (new == NULL)
 				return (NULL);
 			/* assign values */
 			new->n = n;
-			new->prev = tmp->prev;
-			new->next = tmp;
-			tmp->prev = new;
+			new->next = tmp->next;
+			new->prev = tmp;
+			tmp->next->prev = new;
+			tmp->next = new;
 			return (new);
 		}
 		tmp = tmp->next;
 		i++;
 	}
 	if (idx == i + 1)
-		return (add_dnodeint_end(h, n));
+		return (add_dnodeint_end(&tmp, n));
 	return (NULL);
 }

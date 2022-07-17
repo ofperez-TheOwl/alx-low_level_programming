@@ -36,7 +36,7 @@ size_t free_no_loop(listint_t *head, size_t count)
 void free_if_loop(listint_t *head, size_t count, size_t ref)
 {
 	/*base case : only one element */
-	if (count == ref)
+	if (count == ref - 1)
 	{
 		free(head->next);
 		free(head);
@@ -66,7 +66,7 @@ size_t free_listint_safe(listint_t **head)
 		free_if_loop(*head, 0, result.len);
 	else
 		result.len = free_no_loop(*head, 0);
-	
+
 	*head = NULL;
 
 	return (result.len);

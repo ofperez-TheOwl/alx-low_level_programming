@@ -19,9 +19,11 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	/* exclusions */
 	if (*h == NULL && idx != 0)
 		return (NULL);
+	/* first element insertion */
 	if (idx == 0)
 		return (add_dnodeint(h, n));
-	while (tmp->next != NULL)
+	/* not first not last insertion */
+	while (tmp != NULL)
 	{
 		if (i == idx)
 		{

@@ -50,11 +50,11 @@ listint_t *find_listint_loop(listint_t *head)
 	size_t i = 0;
 	loop_r result = {NULL, 0};
 
-	result = loop_check(head);
-	
+	result = loop_check(head);	
+	if (head == NULL)
+		return (head);
 	if (!result.node)
 		return (NULL);
-	
 	while (i < result.len)
 	{
 		head = head->next;

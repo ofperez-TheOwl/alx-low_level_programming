@@ -18,7 +18,7 @@ void free_dlistint(dlistint_t *head)
 	}
 	if (head->next == NULL)
 	{
-		free(head->next);
+		free(head);
 		return;
 	}
 	/* recursive instructions */

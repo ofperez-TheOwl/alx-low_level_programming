@@ -38,7 +38,6 @@ void free_if_loop(listint_t *head, size_t count, size_t ref)
 	/*base case : only one element */
 	if (count == ref - 1)
 	{
-		free(head->next);
 		free(head);
 		return;
 	}

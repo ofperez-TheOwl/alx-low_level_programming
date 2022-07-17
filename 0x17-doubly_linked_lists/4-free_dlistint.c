@@ -13,13 +13,12 @@ void free_d(dlistint_t *head)
 	/* base case */
 	if (head->next == NULL)
 	{
-		free(head->next);
 		free(head);
 		return;
 	}
 	/* recursive instructions */
 	free_dlistint(head->next);
-	free(head->next);
+	free(head);
 }
 
 /**
@@ -38,8 +37,6 @@ void free_dlistint(dlistint_t *head)
 	}
 	if (head->prev == NULL && head->next == NULL)
 	{
-		free(head->prev);
-		free(head->next);
 		free(head);
 		return;
 	}

@@ -3,36 +3,41 @@
 
 /**
  * delete_dnodeint_at_index - delete an element of a list of dlistint_t
- * @head: double
- * @index: int
+ * @head: dlistint_t pointer to pointer; list
+ * @index: int; index of node
  *
- * Return:int;
+ * Return:int; 1 if success -1 if not
  * TheOwl
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	unsigned int i = 0;
-	dlistint_t tmp = *head;
+	dlistint_t *tmp = *head, *del;
 
-	if (*head == NULL)
+	if (tmp == NULL)
 		return (-1);
-	if (index == 0)
+	if (index == 0 && tmp->next == NULL)
 	{
-		*head = head->next;
-		free(((*head)->prev)->next);
-		free((*head)->prev);
-		(*head)->prev = NULL;
+		free(tmp);
+		return (1);
+	}
+
+	if (index == 0 && tmp->next != NULL)
+	{
+		*head = tmp->next;
+		tmp->nex->prev = NULL;
+		free(tmp);
 		return (1);
 	}
 	while (tmp->next != NULL)
 	{
-		if (i == index)
+		if (i == index - 1)
 		{
-			(tmp->prev)->next = tmp->next;
-			(tmp->next)->prev = tmp->prev;
-			free(tmp->next);
-			free(tmp->prev);
-			free(tmp);
+			del = tmp->next;
+			tmp->next = tmp->next->next;
+			if (tmp->next != NULL)
+				tmp->next->prev = tmp;
+			free(del);
 			return (1);
 		}
 		tmp = tmp->next;

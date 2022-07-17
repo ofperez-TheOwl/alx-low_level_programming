@@ -8,10 +8,10 @@
  * Return: listint_t; start of the loop or NULL if no loop
  * TheOwl
  */
-listint_t *find_listint_loop(listint_t *head);
+listint_t *find_listint_loop(listint_t *head)
 {
 	size_t i = 0;
-	loop_r result = {NULL, 0}
+	loop_r result = {NULL, 0};
 
 	result = loop_finder(head);
 	if (!result.node)
